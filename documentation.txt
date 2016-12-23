@@ -1,0 +1,49 @@
+Documentation: 
+	Once logged in to CS50 IDE, check to see if there’s a terminal window already open below midway down the page.
+If there is, you should see a tab with the word “workspace/” on it. If not, open up a new terminal window by 
+clicking the green plus sign halfway down the web page (not in the upper right-hand corner). In this terminal window, 
+run “update50,” wait for it to load, and close/re-open the terminal window. Next, click the green plus sign to open up a second 
+terminal window. To change the directory to be able to run the code for our project, run the command “cd project/.” The words on 
+the left-hand sign of the bottom screen should now read: “~/workspace/project/ $”. Make sure both terminals have this text before 
+the cursor on the left-hand side. If not, run “cd project/” again so both terminals are running commands under the same directories. 
+	Since we’ve submitted the file “project” containing our project, the files application.py, failure.html, index.html, main.html, 
+results.html, success.html, and survey.html should be included in the “project” file in the left-hand sidebar. If not, there was an
+issue with submission. In one terminal window, type the words “flask run” after the $ sign in the terminal window. This runs flask, 
+a Python web development framework that allows us to display our web application through the IDE’s web server. Once flask has been
+run with the previous command, type the words “phpliteadmin project.db” into the second terminal window after the $ sign (not the 
+same as the previous terminal). This allows the user to manage SQLite databases in the website and execute SQLite queries to insert 
+and retrieve data from the database. Once both commands have been executed in separate terminal windows, click on the “CS50 IDE” 
+icon in the upper left-hand corner of the IDE screen, scroll down to “Web Server” and click on it. This should open a new tab in your
+browser window that hosts the web application, and the home page of our web application should appear.
+	We’ve created a web application that allows Harvard freshmen to rate their dorm rooms, providing feedback on location, size, 
+view, number of bedrooms, and number of residents in each room. This provides information to incoming freshmen once they’ve received 
+their room assignments, giving them a heads-up on what to pack and what to expect regarding living and sleeping arrangements. This 
+also allows Harvard students to provide feedback on how much they like or dislike their dorm rooms and the various pros and cons 
+associated with each specific room. 
+	The first page that pops up once the user opens the CS50 IDE Web Server is the main “search” page. On this page, users can 
+specify the dorm they’re seeking information for in the first dropdown menu, the entryway of their room in the second dropdown, and 
+the room number in the third text box. Once the user clicks the “search” button at the bottom of the home page, the web application 
+will either retrieve the data available for that specific room and display the results in a web page, or notify the user that there 
+isn’t any data available yet for that specific room. 
+In the top right-hand corner of the home page is the “rate my dorm” button, which allows current students to evaluate their dorm 
+rooms and provide information to add to the website. Once the “rate my dorm” button is clicked, a new page opens up with a series of
+questions. The first three questions ask for basic information on a student’s room: the first question asks the user to select their
+freshman dorm from the dropdown menu, the second asks for an entryway (we’ve provided an option for Apley Court, which has only one 
+entryway), and the third question asks for a room number (without entryway letter). The following dropdowns ask for ratings on 
+various aspects of room satisfaction. The first asks for a score on overall room satisfaction (from 1 to 5, 5 being the best), the 
+second on the room’s size (from 1 to 5, 5 being the largest), the third the number of bedrooms (excluding common room(s)), the 
+fourth on satisfaction with the room’s location (from 1 to 5, 5 being the best), the fifth on on satisfaction with the view (from 1 
+to 5, 5 being the best), and the sixth asks for the number of residents in the room (including the user). The last box on this page 
+is used for any comments or advice the student would like to provide to other future students moving into the dorm he searched for. 
+Clicking the “submit” button adds this data to the database. The website refers back to it when displaying data after the user 
+searches for a specific room, and notifies the user that the data has been added successfully after submission.
+	The search results webpage displays the dorm, entryway, room number, and yard of the given room. It also lists average scores 
+on overall satisfaction, size, location, and view from 1 to 5 and displays the number of bedrooms and residents in the room (so 
+residents will know in advance how many will sleep in single or double bedrooms). It also provides a picture of the exterior of 
+each dormitory, along with a description of basic amenities and stores close by. The text boxes at the bottom of the page list all
+the comments previous reviewers have provided regarding the room, allowing for communication of any specific advice between past and
+future residents of a given room. From this page, users can either navigate back to the home “search” page in the top left-hand 
+corner or rate a room by clicking the button in the top right-hand corner.
+	This website is an excellent tool that will give incoming freshmen the information they need to properly pack and prepare before
+coming to college. I was unsure of how many bedrooms we were going to have in my dorm room before move in day, and a tool like this 
+would have helped me tailor the quantity of belongings I shipped out to Harvard a few weeks before arriving.

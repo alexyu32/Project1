@@ -1,0 +1,34 @@
+design:
+
+In our implementation of Harvard DormScore, we utilized both Pagedraw and python. Using the backend from Pset 7 (C$50 Finance) we were did not need to 
+integrate SQL into our code and set up the website. For the entire front end of the website we used Pagedraw. On our main page we have a title, the Harvard 
+Insignia, a link to the survey, three questions and a search button. For the title we used Pagedraw functionality to create the html and css content. For the Harvard 
+insignia we pulled a picture off the internet and used Pagedraw functionality to integrate this picture into our title. Our “Rate my dorm” button is created from 
+Pagedraw’s interactive block, linking to our “results” page, which hosts the survey for each dorm. The decision to use an interactive block over a traditional button 
+was purely aesthetic. For the first question and second question, we used a drop-down list that contains all the freshmen dorms at Harvard. Since Pagedraw didn’t have 
+functionality for a drop-down list, we used its “custom code” function to input our own html for a dropdown list. We chose to use a dropdown list because to decrease 
+unwanted variability in responses that could alter the results. To find all the different possible entryways we contacted our peers and visited many dorms to collect 
+all necessary data. For the third question we opted out of a drop list primarily because of the large variability of dorm room numbers, the impracticability of 
+visiting every dorm, and the difficulty of navigating a dropdown list of hundreds of values.
+We utilize 2 SQL tables. The first one is a SQL table that hosts all the reviews of each dorm. This has 11 different fields, id(int), house(text), entryway(text)
+(because there are entrywas with numbers and letters), room(int), score(int), size(int), location(int), view(int), comments(text), bedrooms(int), and residents (int). 
+The second table has inputs that were all manually entered after researching each dorm and compiling pictures. This table is called images with 5 different fields, 
+id(int), house(text), img(text), description(text), and yard.
+In our survey page, linked from the main page, we have some of the same features of the main page but also added more. The title, insignia, and the first three 
+questions are the same. We also included a search button, overall score, size, location, view, and comments section. The search button has similar functionality as 
+the “rate my dorm” button on the main page except that it links to the main page, which has the search function. The title, “Harvard DormScore,” also actually links to 
+the home page but we included the button for easier interface. For the overall score, size, rooms, location, view, bedrooms, and residents sections, all of which are
+used to rate the dorms,  we utilized drop-down lists to decrease variability in the ratings. All of these sections are required and if the user does not fill all sections, 
+the user will be redirected to the same survey. This was implemented in the backend by checking if not ____ then return the survey page. We also have a general comments section, 
+which is optional, that utilizes Pagedraw’s function of textarena input. Once the submit button is clicked and all the fields are filled (besides comments), pagedraw will POST the 
+inputted data and pass the variables to our SQL table using the request.form.get function in our backend. When all required fields are correctly filled the user will be redirected 
+to the “success.html” page, which notifies the user that he/she has successfully submitted the form. This page features a button that redirects the user to the home page. 
+The backend can all be seen under “def success” in application.py.
+Our results page features a lot of dynamic functions that allows us to take the inputs from the main page and store them as variable in the backend code. We do this by 
+setting dorm(or the other inputs) = to request.form.get(“dorms”). We are able to do this because Pagedraw allows us to submit the form on the first page as a post 
+to the results page. So after storing dorm, entryway, and room number retrieved from the first page, we can then use those values to query our SQL table for the data on that
+room(size, location, ect.), which was entered from the survey page. We also have an SQL table that includes for each dorm the yard, and image of the building, and a description of 
+the dorm which includes relevant information and nearby attractions. We access this by querying the SQL table where our dorm(variable) = the dorm in the table and store all of this 
+in the dictionary “img”. Before we pass our variables to the redirect we use the format function to ensure that the values only go to 2 decimal places. To print out the comments we used 
+pagedraw’s jinja capabilities to create a new comments box for every comment. We also used a temp variables and a for loop to the array of comments when it’s blank. All this can be seen 
+in “def results” in application.py
